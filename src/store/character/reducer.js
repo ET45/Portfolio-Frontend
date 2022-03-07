@@ -1,5 +1,6 @@
 const initialState = {
   characters: null,
+  characterDetails: null,
 };
 
 export default function reducer(state = initialState, action) {
@@ -9,6 +10,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         characters: action.payload,
+      };
+    }
+    case "character/characterFetched": {
+      return {
+        ...state,
+        characterDetails: action.payload,
       };
     }
 
