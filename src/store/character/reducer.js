@@ -18,6 +18,12 @@ export default function reducer(state = initialState, action) {
         characterDetails: action.payload,
       };
     }
+    case "character/characterAdded": {
+      return {
+        ...state,
+        characters: [...state.characters, action.payload],
+      };
+    }
 
     default: {
       return state;

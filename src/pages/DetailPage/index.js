@@ -15,7 +15,7 @@ export default function DetailPage() {
     dispatch(fetchCharacter(id));
   }, [dispatch, id]);
 
-  console.log("character", character);
+  /*  console.log("character", character); */
   return !character ? (
     <h1>Loading</h1>
   ) : (

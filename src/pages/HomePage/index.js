@@ -47,6 +47,7 @@ export default function Homepage() {
                   <Link to={`/details/${character.id}`}>
                     <button>Details of {character.name}</button>
                   </Link>
+                  <h5>{character.user.name}</h5>
                 </div>
               );
             }

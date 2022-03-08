@@ -1,6 +1,6 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
-
+import { selectToken } from "../user/selectors";
 export function charactersFetched(data) {
   return {
     type: "character/charactersFetched",
@@ -32,5 +32,36 @@ export function fetchCharacter(id) {
     } catch (e) {
       console.log("fetchCharacter", e);
     }
+  };
+}
+
+export const characterAdded = (newCharacter) => ({
+  type: "character/characterAdded",
+  payload: { newCharacter },
+});
+
+export function addCharacter(name, gender, hometown, image, skill) {
+  return async function thunk(dispatch, getState) {
+    // get token from the state
+    const token = selectToken(getState());
+
+    // if we have no token, stop
+    if (token === null) return;
+
+    const response = await axios.post(
+      `${apiUrl}/characters`,
+      {
+        name,
+        gender,
+        hometown,
+        image,
+        skill,
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    console.log("what is the response", response);
+    dispatch(characterAdded(response.data.newCharacter));
   };
 }

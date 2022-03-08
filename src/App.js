@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Homepage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
+import CharacterCreatePage from "./pages/CharacterCreatePage";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -42,6 +43,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Homepage />} />
         <Route path="/details/:id" element={<DetailPage />} />
+        <Route path="/create" element={<CharacterCreatePage />} />
         <Route path="/other" element={<Other />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
