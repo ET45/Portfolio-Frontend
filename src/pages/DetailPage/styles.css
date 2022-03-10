@@ -1,0 +1,13 @@
+.containerDetail {
+  width: 600px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px 5px rgba(143, 136, 136, 0.75);
+  padding: 20px 50px 0px 40px;
+  margin-top: 50px;
+  margin-bottom: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Lato", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+}

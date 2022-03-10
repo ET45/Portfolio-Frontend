@@ -14,7 +14,7 @@ export default function LoggedIn() {
       {" "}
       <Nav.Item>
         <Nav.Link as={NavLink} to="/mypage">
-          MyPage
+          My Page
         </Nav.Link>
       </Nav.Item>
       <Nav.Item style={{ padding: ".5rem 1rem" }}>{user.email}</Nav.Item>

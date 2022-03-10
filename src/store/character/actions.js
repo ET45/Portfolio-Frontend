@@ -10,7 +10,7 @@ export function charactersFetched(data) {
 
 export async function fetchCharacters(dispatch, getState) {
   const response = await axios.get(`${apiUrl}/characters`);
-  console.log("fetchCharacters", response.data);
+  // console.log("fetchCharacters", response.data);
   dispatch(charactersFetched(response.data));
 }
 
@@ -24,13 +24,13 @@ export function characterFetched(data) {
 export function fetchCharacter(id) {
   return async function thunk(dispatch, getState) {
     try {
-      console.log(`${apiUrl}/characters/${id}`);
+      // console.log(`${apiUrl}/characters/${id}`);
       const response = await axios.get(`${apiUrl}/characters/${id}`);
-      console.log("fetchCharacter", response.data);
+      // console.log("fetchCharacter", response.data);
 
       dispatch(characterFetched(response.data));
     } catch (e) {
-      console.log("fetchCharacter", e);
+      // console.log("fetchCharacter", e);
     }
   };
 }
@@ -61,7 +61,37 @@ export function addCharacter(name, gender, hometown, image, skill) {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    console.log("what is the response", response);
+    // console.log("what is the response", response);
     dispatch(characterAdded(response.data.newCharacter));
+  };
+}
+
+export const characterUpdated = (updateCharacter) => ({
+  type: "character/characterUpdated",
+  payload: updateCharacter,
+});
+
+export function updateCharacter({ id, name, gender, hometown, image, skill }) {
+  return async function thunk(dispatch, getState) {
+    console.log("actıon thunk updating", {
+      id,
+      name,
+      gender,
+      hometown,
+      image,
+      skill,
+    });
+
+    const response = await axios.patch(`${apiUrl}/characters/${id}`, {
+      //const response = await axios.patch(`${apiUrl}/characters/${id}`, {
+      name,
+      gender,
+      hometown,
+      image,
+      skill,
+    });
+    console.log("action update Character", response.data);
+
+    dispatch(characterUpdated(response.data.dataValues));
   };
 }

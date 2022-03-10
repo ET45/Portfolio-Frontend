@@ -5,7 +5,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "location/locationsFetched": {
-      /* console.log("charactersFetched", action); */
+      /* // console.log("charactersFetched", action); */
       return {
         ...state,
         locations: action.payload,

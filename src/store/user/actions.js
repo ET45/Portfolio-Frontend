@@ -41,10 +41,10 @@ export const signUp = (name, email, password) => {
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data.message);
+        // console.log(error.response.data.message);
         dispatch(setMessage("danger", true, error.response.data.message));
       } else {
-        console.log(error.message);
+        // console.log(error.message);
         dispatch(setMessage("danger", true, error.message));
       }
       dispatch(appDoneLoading());
@@ -66,10 +66,10 @@ export const login = (email, password) => {
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data.message);
+        // console.log(error.response.data.message);
         dispatch(setMessage("danger", true, error.response.data.message));
       } else {
-        console.log(error.message);
+        // console.log(error.message);
         dispatch(setMessage("danger", true, error.message));
       }
       dispatch(appDoneLoading());
@@ -98,9 +98,9 @@ export const getUserWithStoredToken = () => {
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
-        console.log(error.response.message);
+        // console.log(error.response.message);
       } else {
-        console.log(error);
+        // console.log(error);
       }
       // if we get a 4xx or 5xx response,
       // get rid of the token by logging out

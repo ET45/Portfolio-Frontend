@@ -1,3 +1,4 @@
+import "./styles.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addCharacter } from "../../store/character/actions";
@@ -33,7 +34,7 @@ export default function CharacterCreatePage() {
     dispatch(fetchLocations);
   }, [dispatch]);
 
-  console.log("locations", locations);
+  // console.log("locations", locations);
 
   const submit = (event) => {
     event.preventDefault();
@@ -47,7 +48,7 @@ export default function CharacterCreatePage() {
   }, [token, navigate]);
 
   return (
-    <form onSubmit={submit}>
+    <form onSubmit={submit} className="containerCreate">
       <p>
         <label>
           Name:{""}
@@ -91,6 +92,7 @@ export default function CharacterCreatePage() {
           </select>
         </form>
       </p>
+
       <p>
         Gender:
         <form>

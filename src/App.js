@@ -11,22 +11,13 @@ import Homepage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
 import CharacterCreatePage from "./pages/CharacterCreatePage";
 import MyPage from "./pages/MyPage";
+import CharacterEditPage from "./pages/CharacterEditPage";
+import { Banner } from "./components/Banner";
+import FightPage from "./pages/FightPage";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
-import { Jumbotron } from "react-bootstrap";
-
-/* const Home = () => (
-  <Jumbotron>
-    <h1>Home</h1>
-  </Jumbotron>
-); */
-/* const Other = () => (
-  <Jumbotron>
-    <h1>Other</h1>
-  </Jumbotron>
-); */
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +29,7 @@ function App() {
 
   return (
     <div className="App">
+      <Banner />
       <Navigation />
       <MessageBox />
       {isLoading ? <Loading /> : null}
@@ -45,7 +37,9 @@ function App() {
         <Route exact path="/" element={<Homepage />} />
         <Route path="/details/:id" element={<DetailPage />} />
         <Route path="/create" element={<CharacterCreatePage />} />
+        <Route path="/edit/:id" element={<CharacterEditPage />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/fight/:id" element={<FightPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>

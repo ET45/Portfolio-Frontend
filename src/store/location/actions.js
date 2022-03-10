@@ -10,6 +10,6 @@ export function locationsFetched(data) {
 
 export async function fetchLocations(dispatch, getState) {
   const response = await axios.get(`${apiUrl}/locations`);
-  console.log("fetchLocations", response.data);
+  // console.log("fetchLocations", response.data);
   dispatch(locationsFetched(response.data));
 }
