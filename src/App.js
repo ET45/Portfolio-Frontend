@@ -39,7 +39,7 @@ function App() {
         <Route path="/create" element={<CharacterCreatePage />} />
         <Route path="/edit/:id" element={<CharacterEditPage />} />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/fight/:id" element={<FightPage />} />
+        <Route path="/fight" element={<FightPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>

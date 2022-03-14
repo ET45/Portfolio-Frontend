@@ -1,3 +1,4 @@
+import "./styles.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateCharacter } from "../../store/character/actions";
@@ -48,8 +49,8 @@ export default function CharacterCreatePage() {
     setHometown(characterDetails ? characterDetails.hometown : "");
   }, [dispatch, characterDetails]);
 
-  // console.log("locations", locations);
-  // console.log("characterDetails", characterDetails);
+  /*   console.log("locations", locations);
+  console.log("characterDetails", characterDetails); */
 
   const submit = (event) => {
     event.preventDefault();
@@ -63,73 +64,93 @@ export default function CharacterCreatePage() {
   }, [token, navigate]);
 
   return (
-    <form onSubmit={submit}>
+    <div className="containerEdit">
       <p>
-        <label>
-          Name:{""}
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
+        <b>Name</b>:{name}
       </p>
       <p>
-        <label>
-          Skill:{""}
-          <input
-            type="text"
-            value={skill}
-            onChange={(e) => setSkill(e.target.value)}
-          />
-        </label>
+        <b>Skill:</b>
+        {skill}
+      </p>
+      <b>Image:</b>
+      <img src={image} alt={name} width={100} />
+      <p>
+        <b>Hometown:</b>
+        {hometown}
       </p>
       <p>
-        <label>
-          Image:{""}
-          <input
-            type="text"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          />
-        </label>
+        <b>Gender:</b>
+        {gender}
       </p>
+      <b>EDIT YOUR CHARACTER</b>
+      <form onSubmit={submit}>
+        <p>
+          <label>
+            Name:{""}
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+        </p>
+        <p>
+          <label>
+            Skill:{""}
+            <input
+              type="text"
+              value={skill}
+              onChange={(e) => setSkill(e.target.value)}
+            />
+          </label>
+        </p>
+        <p>
+          <label>
+            Image:{""}
+            <input
+              type="text"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </label>
+        </p>
 
-      <p>
-        Hometown:
-        <select onChange={(e) => setHometown(e.target.value)}>
-          {list.map((location) => (
-            <option value={location.name} key={location.id}>
-              {location.name}
-            </option>
-          ))}
-        </select>
-      </p>
+        <p>
+          Hometown:
+          <select onChange={(e) => setHometown(e.target.value)}>
+            {list.map((location) => (
+              <option value={location.name} key={location.id}>
+                {location.name}
+              </option>
+            ))}
+          </select>
+        </p>
 
-      <p>
-        Gender:
-        <input
-          type="radio"
-          id="male"
-          name="char_gender"
-          value="Male"
-          checked={gender === "Male"}
-          onChange={(e) => setGender(e.target.value)}
-        />
-        <label htmlFor="male">Male</label>
-        <input
-          type="radio"
-          id="female"
-          name="char_gender"
-          value="Female"
-          checked={gender === "Female"}
-          onChange={(e) => setGender(e.target.value)}
-        />
-        <label htmlFor="female">Female</label>
-      </p>
-      <p>
-        <button type="submit">Update</button>
-      </p>
-    </form>
+        <p>
+          Gender:
+          <input
+            type="radio"
+            id="male"
+            name="char_gender"
+            value="Male"
+            checked={gender === "Male"}
+            onChange={(e) => setGender(e.target.value)}
+          />
+          <label htmlFor="male">Male</label>
+          <input
+            type="radio"
+            id="female"
+            name="char_gender"
+            value="Female"
+            checked={gender === "Female"}
+            onChange={(e) => setGender(e.target.value)}
+          />
+          <label htmlFor="female">Female</label>
+        </p>
+        <p>
+          <button type="submit">Update</button>
+        </p>
+      </form>
+    </div>
   );
 }

@@ -29,6 +29,7 @@ export default function Navigation() {
           ) : (
             ""
           )}
+          {token ? <NavbarItem path="/fight" linkText="Fight" /> : ""}
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
