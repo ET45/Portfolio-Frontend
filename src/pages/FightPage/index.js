@@ -1,9 +1,8 @@
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import { fetchCharacter } from "../../store/character/actions";
-import { selectCharacterDetails } from "../../store/character/selectors";
+import FightingStatics from "../../components/FightingStatics";
 import { fetchCharacters } from "../../store/character/actions";
 import { selectCharacters } from "../../store/character/selectors";
 import "./styles.css";
@@ -14,7 +13,7 @@ export default function FightPage() {
   const [yourCharacter, setYourCharacter] = useState("None");
 
   const dispatch = useDispatch();
-  const characterDetails = useSelector(selectCharacterDetails);
+
   const character = useSelector(selectCharacters);
 
   useEffect(() => {
@@ -49,16 +48,19 @@ export default function FightPage() {
           </select>
         </form>
         <div>
-          <img src={yourCharacter.image} />
+          <img src={yourCharacter.image} alt="Choose a character" />
         </div>
       </div>
       <h1 className="VS">
         <b>VS</b>
-        <img src={VS} />
+        <FightingStatics />
+
+        <img src={VS} alt="vs" />
       </h1>
       <div>
         <div className="dragon">
           <b>Opponent</b>
+          Fenchurch:
           <img src={Dragon} alt="Dragon" />
         </div>
       </div>

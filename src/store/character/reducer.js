@@ -1,5 +1,5 @@
 const initialState = {
-  characters: null,
+  characters: [],
   characterDetails: null,
 };
 
@@ -19,9 +19,10 @@ export default function reducer(state = initialState, action) {
       };
     }
     case "character/characterAdded": {
+      console.log("state", state);
       return {
         ...state,
-        characters: [...state.characters, action.payload],
+        characters: [...state.characters, action.payload.newCharacters],
       };
     }
     case "character/characterUpdated": {

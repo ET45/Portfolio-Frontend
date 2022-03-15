@@ -1,6 +1,8 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
 import { selectToken } from "../user/selectors";
+import { showMessageWithTimeout } from "../appState/actions";
+
 export function charactersFetched(data) {
   return {
     type: "character/charactersFetched",
@@ -62,6 +64,7 @@ export function addCharacter(name, gender, hometown, image, skill) {
       }
     );
     // console.log("what is the response", response);
+    dispatch(showMessageWithTimeout("success", true, "Character Created"));
     dispatch(characterAdded(response.data.newCharacter));
   };
 }
@@ -73,7 +76,7 @@ export const characterUpdated = (updateCharacter) => ({
 
 export function updateCharacter({ id, name, gender, hometown, image, skill }) {
   return async function thunk(dispatch, getState) {
-    console.log("actıon thunk updating", {
+    console.log("action thunk updating", {
       id,
       name,
       gender,
@@ -83,7 +86,6 @@ export function updateCharacter({ id, name, gender, hometown, image, skill }) {
     });
 
     const response = await axios.patch(`${apiUrl}/characters/${id}`, {
-      //const response = await axios.patch(`${apiUrl}/characters/${id}`, {
       name,
       gender,
       hometown,
@@ -91,7 +93,7 @@ export function updateCharacter({ id, name, gender, hometown, image, skill }) {
       skill,
     });
     console.log("action update Character", response.data);
-
+    dispatch(showMessageWithTimeout("success", true, "Character Updated"));
     dispatch(characterUpdated(response.data.dataValues));
   };
 }

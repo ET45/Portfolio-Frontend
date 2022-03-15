@@ -71,10 +71,12 @@ export default function MyPage() {
                 />
                 <h3>{myCharacter.name}</h3>
                 <Link to={`/details/${myCharacter.id}`}>
-                  <button>Details of {myCharacter.name}</button>
+                  <button className="button-24">
+                    Details of {myCharacter.name}
+                  </button>
                 </Link>
                 <Link to={`/edit/${myCharacter.id}`}>
-                  <button>Edit {myCharacter.name}</button>
+                  <button className="button-24">Edit {myCharacter.name}</button>
                 </Link>
                 <h5>{myCharacter.user.name}</h5>
               </div>

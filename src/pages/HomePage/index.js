@@ -38,30 +38,36 @@ export default function Homepage() {
   return (
     <div className="container">
       <div className="cardsWrapper">
-        {!characters
+        {characters.length < 1
           ? "Loading"
           : paginateCharacters(characters, limit, currentPage).map(
               (character) => {
                 return (
                   <div className="info" key={character.id}>
                     <img
-                      src={character.image}
-                      alt={character.name}
+                      src={character?.image}
+                      alt={character?.name}
                       width={200}
                     />
-                    <h3>{character.name}</h3>
-                    <Link to={`/details/${character.id}`}>
-                      <button>Details of {character.name}</button>
+                    <h3>{character?.name}</h3>
+                    <Link to={`/details/${character?.id}`}>
+                      <button className="button-24">
+                        Details of {character?.name}
+                      </button>
                     </Link>
-                    <h5>{character.user.name}</h5>
+                    <h5>{character?.user.name}</h5>
                   </div>
                 );
               }
             )}
       </div>
       <div className="buttonsPagination">
-        <button onClick={decrementPage}>Previous</button>
-        <button onClick={incrementPage}>Next</button>
+        <button onClick={decrementPage} className="button-24">
+          Previous
+        </button>
+        <button onClick={incrementPage} className="button-24">
+          Next
+        </button>
       </div>
     </div>
   );

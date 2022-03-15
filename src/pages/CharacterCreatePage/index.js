@@ -38,6 +38,7 @@ export default function CharacterCreatePage() {
 
   const submit = (event) => {
     event.preventDefault();
+
     dispatch(addCharacter(name, gender, hometown, image, skill));
   };
 
@@ -47,7 +48,9 @@ export default function CharacterCreatePage() {
     }
   }, [token, navigate]);
 
-  return (
+  return !locations ? (
+    <></>
+  ) : (
     <form onSubmit={submit} className="containerCreate">
       <p>
         <label>
@@ -115,7 +118,9 @@ export default function CharacterCreatePage() {
         </form>
       </p>
       <p>
-        <button type="submit">Create</button>
+        <button type="submit" className="button-24">
+          Create
+        </button>
       </p>
     </form>
   );

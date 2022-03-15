@@ -65,23 +65,6 @@ export default function CharacterCreatePage() {
 
   return (
     <div className="containerEdit">
-      <p>
-        <b>Name</b>:{name}
-      </p>
-      <p>
-        <b>Skill:</b>
-        {skill}
-      </p>
-      <b>Image:</b>
-      <img src={image} alt={name} width={100} />
-      <p>
-        <b>Hometown:</b>
-        {hometown}
-      </p>
-      <p>
-        <b>Gender:</b>
-        {gender}
-      </p>
       <b>EDIT YOUR CHARACTER</b>
       <form onSubmit={submit}>
         <p>
@@ -148,7 +131,9 @@ export default function CharacterCreatePage() {
           <label htmlFor="female">Female</label>
         </p>
         <p>
-          <button type="submit">Update</button>
+          <button type="submit" className="button-24">
+            Update
+          </button>
         </p>
       </form>
     </div>
