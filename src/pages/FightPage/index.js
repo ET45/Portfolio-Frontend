@@ -5,6 +5,8 @@ import { fetchCharacter } from "../../store/character/actions";
 import FightingStatics from "../../components/FightingStatics";
 import { fetchCharacters } from "../../store/character/actions";
 import { selectCharacters } from "../../store/character/selectors";
+import { selectToken } from "../../store/user/selectors";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import Dragon from "./Dragon.gif";
 import VS from "./Vs.gif";
@@ -15,6 +17,10 @@ export default function FightPage() {
   const dispatch = useDispatch();
 
   const character = useSelector(selectCharacters);
+
+  const token = useSelector(selectToken);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     /* // console.log("id", id); */
@@ -27,6 +33,12 @@ export default function FightPage() {
   console.log(character);
 
   console.log("what is set choose char", yourCharacter);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
 
   return !character ? (
     <h1>Loading</h1>
@@ -41,9 +53,11 @@ export default function FightPage() {
           >
             <option>None</option>
             {character
-              ? character.map((char, i) => (
-                  <option value={JSON.stringify(char)}>{char.name}</option>
-                ))
+              ? character.map((char, i) => {
+                  return (
+                    <option value={JSON.stringify(char)}>{char?.name}</option>
+                  );
+                })
               : ""}
           </select>
         </form>

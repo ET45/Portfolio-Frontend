@@ -4,9 +4,9 @@ export default function FightingStatics() {
 
   const functionForFight = () => {
     if (heroAttack >= opponentAttack) {
-      return alert("Hero Win!!");
+      return alert("Hero Win!!!");
     } else {
-      return alert("Fenchurch Win!!");
+      return alert("Fenchurch the Dragon Win!!!");
     }
   };
 
